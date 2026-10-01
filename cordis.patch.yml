@@ -1,0 +1,9 @@
+# dsh-retry-button bundle patch: register the plugin as a Loader entry.
+#
+# The entry is the whole host-side requirement. @deepseek-ai/dsh-client-modules
+# scans live Loader entries by package name, reads this package's
+# exports["./client"], and serves that bundle under /plugins for the browser to
+# load; declaring the row is what makes the client half discoverable.
+- insert:
+    - id: retry-button
+      name: dsh-retry-button

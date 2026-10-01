@@ -1,0 +1,16 @@
+packages:
+  - .
+
+# Hoisted, because the DSH peers must resolve to the SAME module instances the
+# host uses; a nested layout would give the plugin its own copy of e.g.
+# @deepseek-ai/cordis and break service-registration identity. React identity
+# matters for the same reason: the browser resolves it from the shell's frozen
+# module table, so a duplicated copy would break hooks.
+nodeLinker: hoisted
+
+# DSH packages declare each other as peers and the host supplies them.
+# Installing peers automatically would pull a second, disagreeing copy.
+autoInstallPeers: false
+
+allowBuilds:
+  esbuild: false
